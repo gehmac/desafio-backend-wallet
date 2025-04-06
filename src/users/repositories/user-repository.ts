@@ -34,7 +34,7 @@ export class UserRepository {
   async deleteRefreshTokenHashOfId(userId: string): Promise<void> {
     await this.model.update(
       { id: userId },
-      { hashedRefreshToken: undefined },
+      { hashedRefreshToken: '' },
     );
   }
 }

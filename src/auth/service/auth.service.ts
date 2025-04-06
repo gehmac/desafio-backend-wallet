@@ -1,6 +1,5 @@
 import { BadRequestException, ForbiddenException, Injectable } from '@nestjs/common';
 
-import * as bcrypt from 'bcrypt';
 import { User } from 'src/users/entities/user-entity';
 import { UserService } from 'src/users/service/user-service';
 import { v4 } from 'uuid';
@@ -69,17 +68,17 @@ export class AuthService {
   }
 
 
-  async validateUser(email: string, password: string): Promise<User> {
-    const user: User | undefined = await this.usersService.getUserByEmail(email);
-    if (!user) {
-      throw new BadRequestException('User not found');
-    }
-    const isMatch: boolean = bcrypt.compareSync(password, user.password);
-    if (!isMatch) {
-      throw new BadRequestException('Password does not match');
-    }
-    return user;
-  }
+  // async validateUser(email: string, password: string): Promise<User> {
+  //   const user: User | undefined = await this.usersService.getUserByEmail(email);
+  //   if (!user) {
+  //     throw new BadRequestException('User not found');
+  //   }
+  //   const isMatch: boolean = bcrypt.compareSync(password, user.password);
+  //   if (!isMatch) {
+  //     throw new BadRequestException('Password does not match');
+  //   }
+  //   return user;
+  // }
 
   async login(userCredential: LoginDto): Promise<any> {
     const user = await this.getUserInfo(userCredential.email);

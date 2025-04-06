@@ -1,5 +1,4 @@
-import { Controller, Get, Post, Body, Param } from '@nestjs/common';
-import { CreateUserDto } from '../dtos/create-user.dto';
+import { Controller } from '@nestjs/common';
 import { UserService } from '../service/user-service';
 
 
@@ -7,13 +6,13 @@ import { UserService } from '../service/user-service';
 export class UsersController {
   constructor(private readonly usersService: UserService) { }
 
-  @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.createUser(createUserDto);
-  }
+  // @Post()
+  // create(@Body() createUserDto: CreateUserDto) {
+  //   return this.usersService.createUser(createUserDto);
+  // }
 
-  @Get(':email')
-  findOne(@Param('email') email: string) {
-    return this.usersService.getUserById(email);
-  }
+  // @Get(':email')
+  // findOne(@Param('email') email: string) {
+  //   return this.usersService.getUserById(email);
+  // }
 }
