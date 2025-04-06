@@ -1,5 +1,6 @@
 import { DataSource, DataSourceOptions } from "typeorm";
 import { Environment } from "../config/environment";
+import { User } from "../../users/entities/user-entity";
 
 
 const dataSourceOptions: DataSourceOptions = {
@@ -9,7 +10,7 @@ const dataSourceOptions: DataSourceOptions = {
   database: Environment.getVar('DB_DATABASE'),
   username: Environment.getVar('DB_USERNAME'),
   password: Environment.getVar('DB_PASSWORD'),
-  entities: [],
+  entities: [User],
   migrations: [__dirname + '/migrations/*.ts'],
 };
 

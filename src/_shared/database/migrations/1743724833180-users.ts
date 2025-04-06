@@ -8,7 +8,9 @@ export class Users1743724833180 implements MigrationInterface {
 			CREATE TABLE users (
 					id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
 					email VARCHAR(255) UNIQUE NOT NULL,
+					name VARCHAR(255) UNIQUE NOT NULL,
 					password VARCHAR(255) NOT NULL,
+          hashed_refresh_token VARCHAR(255),
 					created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 			);`);
   }
@@ -17,4 +19,4 @@ export class Users1743724833180 implements MigrationInterface {
     await queryRunner.query(`DROP TABLE users;`);
   }
 
-} 
+}

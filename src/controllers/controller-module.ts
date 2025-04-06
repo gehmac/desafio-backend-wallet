@@ -6,4 +6,7 @@ import { PingController } from './ping/ping-controller';
   controllers: [PingController],
   providers: [],
 })
-export class ControllersModule { }
+export class ControllersModule {
+  // eslint-disable-next-line prettier/prettier
+  constructor() { }
+}

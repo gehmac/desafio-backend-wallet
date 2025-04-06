@@ -17,6 +17,7 @@ import { Environment } from './environment';
         entities: [__dirname + '/../**/*.entity{.ts,.js}'],
         synchronize: Environment.getEnvType() !== 'production',
         logging: Environment.getEnvType() === 'development',
+        autoLoadEntities: true,
       }),
     }),
   ],
