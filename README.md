@@ -30,8 +30,8 @@ npm run start:dev
 ##### Body:
 ```json
 {
-  "email": "test12@mail.com",
-  "name": "Fulano 2",
+  "email": "usuario1@mail.com",
+  "name": "Usuario 1",
   "password": "AAAAAAfd2312,"
 }
 ```
