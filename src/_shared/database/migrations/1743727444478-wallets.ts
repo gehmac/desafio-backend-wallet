@@ -5,7 +5,7 @@ export class Wallets1743727444478 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
 
         await queryRunner.query(`
-                CREATE TABLE wallets (
+        CREATE TABLE wallets (
             id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
             user_id UUID UNIQUE NOT NULL,
             balance DECIMAL(10, 2) DEFAULT 0.00,

@@ -4,12 +4,10 @@ import {
   Inject,
   UnauthorizedException,
 } from '@nestjs/common';
-import { AccessTokenStrategy } from 'src/auth/strategies/access-token-strateegy';
 import { UserService } from 'src/users/service/user-service';
+import * as jwt from 'jsonwebtoken';
 
 export class AuthGuard implements CanActivate {
-  @Inject()
-  private readonly accessTokenStrategy: AccessTokenStrategy;
   @Inject()
   private readonly usersService: UserService;
 
@@ -21,7 +19,7 @@ export class AuthGuard implements CanActivate {
     if (!token) throw new UnauthorizedException();
 
     try {
-      const tokenPayload = await this.accessTokenStrategy.validate(token);
+      const tokenPayload = jwt.verify(token, 'access_token_secret') as any;
 
       const user = await this.usersService.getUserByEmail(
         tokenPayload.email,

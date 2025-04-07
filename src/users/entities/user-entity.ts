@@ -2,7 +2,7 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  CreateDateColumn,
+  CreateDateColumn
 } from 'typeorm';
 import { Exclude } from 'class-transformer';
 
@@ -24,8 +24,10 @@ export class User {
   @CreateDateColumn()
   createdAt: Date;
 
-  @Exclude()
+  @Column('uuid', { array: true, default: () => 'ARRAY[]::uuid[]' })
+  walletIds: string[];
 
+  @Exclude()
   @Column({ name: 'hashed_refresh_token', nullable: true })
   hashedRefreshToken?: string;
 }

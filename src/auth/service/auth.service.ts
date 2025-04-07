@@ -27,7 +27,8 @@ export class AuthService {
       ...user, password: hashedPassword,
       id: userId,
       name: user.name,
-      createdAt: new Date()
+      createdAt: new Date(),
+      walletIds: []
     };
     await this.usersService.createUser(newUser);
     const tokens = await this.getToken({ ...user, id: userId });

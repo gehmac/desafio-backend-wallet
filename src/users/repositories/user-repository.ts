@@ -10,6 +10,7 @@ export class UserRepository {
   ) { }
 
   async ofEmail(email: string): Promise<User | undefined> {
+    if (!email) return undefined;
     const user = await this.model.findOne({ where: { email } });
     return user ?? undefined;
   }
