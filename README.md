@@ -1,7 +1,14 @@
 
 # 💸 Banck API
+API para gerenciamento de usuários e carteiras com sistema de transferência e autenticação com tokens.
 
 ## Passos para rodar o projeto
+obs: Lembrando que o projeto fou contruido no node 22
+
+0. Instale as dependências:
+```bash
+npm i
+```
 
 1. Suba os containers:
 ```bash
