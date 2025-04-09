@@ -24,7 +24,6 @@ export class WalletsController {
 
   @Post('transfer')
   async transferFunds(
-    @GetCurrentUser() sender: any,
     @Body() transferDto: TransferDto,
   ) {
     return this.walletsService.transferFunds({
