@@ -41,18 +41,12 @@ export class TransactionService {
         throw new Error('Transaction cannot be reverted');
       }
 
-      await this.transactionRepository.updateStatus(
-        transactionId, 'reverting'
-      );
+      await this.transactionRepository.updateStatus(transactionId, 'reverting');
 
-      await queryRunner.manager.query(
-        `UPDATE wallets SET balance = balance + $1, updated_at = NOW() WHERE id = $2`,
-        [-transaction.amount, transaction.receiverWalletId]
-      );
-
-      await queryRunner.manager.query(
-        `UPDATE wallets SET balance = balance + $1, updated_at = NOW() WHERE id = $2`,
-        [transaction.amount, transaction.senderWalletId]
+      await this.walletsService.updateBalancesOnReversion(
+        transaction.senderWalletId,
+        transaction.receiverWalletId,
+        transaction.amount
       );
 
       await this.transactionRepository.updateStatus(transactionId, 'reverted');

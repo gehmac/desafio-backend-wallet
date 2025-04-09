@@ -83,4 +83,9 @@ export class WalletsService {
     if (wallet?.userId !== userId) throw new NotFoundException('Wallet not found');
     return { balance: wallet?.balance };
   }
+
+  async updateBalancesOnReversion(senderWalletId: string, receiverWalletId: string, amount: number) {
+    await this.walletRepository.updateBalance(senderWalletId, amount);
+    await this.walletRepository.updateBalance(receiverWalletId, -amount);
+  }
 }
