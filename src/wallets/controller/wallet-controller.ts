@@ -28,7 +28,7 @@ export class WalletsController {
     @Body() transferDto: TransferDto,
   ) {
     return this.walletsService.transferFunds({
-      senderId: sender.id,
+      senderId: transferDto.senderId,
       receiverId: transferDto.receiverId,
       amount: transferDto.amount,
     });

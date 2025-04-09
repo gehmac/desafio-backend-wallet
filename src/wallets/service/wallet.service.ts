@@ -31,8 +31,8 @@ export class WalletsService {
     try {
       const { senderId, receiverId, amount } = transferDto;
 
-      const senderWallet = await this.walletRepository.ofUserId(senderId);
-      const receiverWallet = await this.walletRepository.ofUserId(receiverId);
+      const senderWallet = await this.walletRepository.ofWalletId(senderId);
+      const receiverWallet = await this.walletRepository.ofWalletId(receiverId);
 
       if (!senderWallet || !receiverWallet) {
         throw new NotFoundException('One or both wallets not found');
